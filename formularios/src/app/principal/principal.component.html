@@ -1,0 +1,13 @@
+
+<div class="main" fxLayout="column" fxLayoutAlign="start center" >
+    <h1>Selecciona el formulario a mostrar</h1>
+    <div fxLayout="row" fxLayoutAlign="space-around">
+        <button mat-raised-button color="primary" (click)="onClick1()">Ir a formulario 1</button>
+        <button mat-raised-button color="primary" (click)="onClick2()">Ir a formulario 2</button>
+    </div>
+</div>
+<div>
+    <p></p>
+    <app-cards *ngIf="mostrarCard1" [cardInit]="1"></app-cards>
+    <app-cards *ngIf="mostrarCard2" [cardInit]="2"></app-cards>
+</div>
