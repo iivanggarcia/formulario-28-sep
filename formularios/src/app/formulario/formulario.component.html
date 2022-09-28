@@ -1,32 +1,36 @@
 <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi">
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi">
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Ex. Pizza" value="Sushi">
-    </mat-form-field>
+    <div>
+    <ng-template [ngIf]="init.input1"><mat-form-field class="input1-width" appearance="fill">
+        <mat-label>Input 1</mat-label>
+        <input matInput placeholder="Input1" value="Input1">
+    </mat-form-field></ng-template>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Favorite food</mat-label>
+    <ng-template [ngIf]="init.input2"><mat-form-field class="input2-width" appearance="fill">
+        <mat-label>Input 2</mat-label>
+        <input matInput placeholder="Input2" value="Input2">
+    </mat-form-field></ng-template>
+
+    <ng-template [ngIf]="init.input3"><mat-form-field class="input3-width" appearance="fill" > <!--fxFill-->
+        <mat-label>Input 3</mat-label>
+        <input matInput placeholder="Input3" value="Input3">
+    </mat-form-field></ng-template>
+    </div>
+
+    <ng-template [ngIf]="init.input4"><mat-form-field appearance="fill">
+        <mat-label>Input4</mat-label>
         <mat-select>
             <mat-option *ngFor="let item of items" [value]="item.value">
                 {{item.viewValue}}
             </mat-option>
         </mat-select>
-    </mat-form-field>
+    </mat-form-field></ng-template>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Favorite food</mat-label>
+    <ng-template [ngIf]="init.input5"><mat-form-field appearance="fill">
+        <mat-label>Input5</mat-label>
         <mat-select>
             <mat-option *ngFor="let item of items" [value]="item.value">
                 {{item.viewValue}}
             </mat-option>
         </mat-select>
-    </mat-form-field>
+    </mat-form-field></ng-template>
 </form>
