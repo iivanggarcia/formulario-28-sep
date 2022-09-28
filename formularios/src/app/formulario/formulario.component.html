@@ -1,5 +1,4 @@
-<form class="example-form">
-    <div>
+<form class="example-form" fxLayoutGap="5px">
     <ng-template [ngIf]="init.input1"><mat-form-field class="input1-width" appearance="fill">
         <mat-label>Input 1</mat-label>
         <input matInput placeholder="Input1" value="Input1">
@@ -14,9 +13,8 @@
         <mat-label>Input 3</mat-label>
         <input matInput placeholder="Input3" value="Input3">
     </mat-form-field></ng-template>
-    </div>
 
-    <ng-template [ngIf]="init.input4"><mat-form-field appearance="fill">
+    <ng-template [ngIf]="init.input4"><mat-form-field appearance="fill" class="input4-width">
         <mat-label>Input4</mat-label>
         <mat-select>
             <mat-option *ngFor="let item of items" [value]="item.value">
@@ -25,7 +23,7 @@
         </mat-select>
     </mat-form-field></ng-template>
 
-    <ng-template [ngIf]="init.input5"><mat-form-field appearance="fill">
+    <ng-template [ngIf]="init.input5"><mat-form-field appearance="fill" class="input5-width">
         <mat-label>Input5</mat-label>
         <mat-select>
             <mat-option *ngFor="let item of items" [value]="item.value">
