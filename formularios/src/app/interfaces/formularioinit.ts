@@ -1,7 +1,11 @@
+import { NonNullAssert } from "@angular/compiler"
+
 export interface formularioInitI{
-    input1: boolean,
-    input2: boolean,
-    input3: boolean,
-    input4: boolean,
-    input5: boolean
+    show: boolean,
+    toolTip : string,
+    name: string,
+    maxLength : number,
+    placeholder : string,
+    disabled : boolean,
+    required : boolean
 }

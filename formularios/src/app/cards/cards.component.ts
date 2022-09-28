@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { retry } from 'rxjs';
 import { FormularioComponent } from '../formulario/formulario.component';
 import { formularioInitI } from '../interfaces/formularioinit';
 
@@ -11,13 +12,7 @@ export class CardsComponent implements OnInit {
 
   @Input() cardInit : number = 0;
 
-  configFormulario : formularioInitI = {
-    input1: false,
-    input2: false,
-    input3: false,
-    input4: false,
-    input5: false
-  };
+  configFormulario : formularioInitI[] = [];
 
   constructor() { }
 
@@ -27,20 +22,33 @@ export class CardsComponent implements OnInit {
 
   generarFormulariosCard(){
     if(this.cardInit == 1){
-      this.configFormulario = this.crearObjFormularioInit(true, false, true, false, true);
+      this.configFormulario = this.asignarInputs(true, false, true, false, true);
     }
     else {
-      this.configFormulario = this.crearObjFormularioInit(true, true, true, true, false);
+      this.configFormulario = this.asignarInputs(true, true, true, true, false);
     }
   }
 
-  crearObjFormularioInit(a: boolean, b: boolean, c: boolean, d: boolean, e: boolean){
+  asignarInputs(a: boolean, b: boolean, c: boolean, d: boolean, e: boolean){
+    let arrInit = [a,b,c,d,e];
+    let auxArr : formularioInitI[] = [];
+    for(let contador = 0 ; contador < 5; contador ++){
+      let auxObj = this.crearObjFormularioInit(arrInit[contador], contador);
+      auxArr.push(auxObj);
+    }
+    return auxArr;
+  }
+
+  crearObjFormularioInit(a : boolean, contador : number){
+    let c = ++contador;
     let obj : formularioInitI = {
-      input1: a,
-      input2: b,
-      input3: c,
-      input4: d,
-      input5: e
+      show: a,
+      toolTip: 'toolTip ' + c,
+      name: 'name '+ c,
+      maxLength: 5,
+      placeholder: 'placeholder ' + c,
+      disabled: false,
+      required: false
     }
     return obj;
   }

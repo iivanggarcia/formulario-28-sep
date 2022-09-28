@@ -1,34 +1,23 @@
 <form class="example-form" fxLayoutGap="5px">
-    <ng-template [ngIf]="init.input1"><mat-form-field class="input1-width" appearance="fill">
-        <mat-label>Input 1</mat-label>
-        <input matInput placeholder="Input1" value="Input1">
-    </mat-form-field></ng-template>
+    <ng-template *ngFor="let init of config; let i = index" [ngIf]="init.show && i <3">
+        <mat-form-field appearance="fill" [ngClass]="{
+            'input1-width' : i === 0,
+            'input2-width' : i === 1,
+            'input3-width' : i === 2
+        }">
+            <mat-label>{{init.name}}</mat-label>
+            <input matInput placeholder="{{init.placeholder}}" matTooltip="{{init.toolTip}}" disabled="{{init.disabled}}" required="{{init.required}}" [attr.maxlength]="init.maxLength" > <!--value="Input1" -->
+        </mat-form-field>
+    </ng-template>
 
-    <ng-template [ngIf]="init.input2"><mat-form-field class="input2-width" appearance="fill">
-        <mat-label>Input 2</mat-label>
-        <input matInput placeholder="Input2" value="Input2">
-    </mat-form-field></ng-template>
-
-    <ng-template [ngIf]="init.input3"><mat-form-field class="input3-width" appearance="fill" > <!--fxFill-->
-        <mat-label>Input 3</mat-label>
-        <input matInput placeholder="Input3" value="Input3">
-    </mat-form-field></ng-template>
-
-    <ng-template [ngIf]="init.input4"><mat-form-field appearance="fill" class="input4-width">
-        <mat-label>Input4</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let item of items" [value]="item.value">
-                {{item.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field></ng-template>
-
-    <ng-template [ngIf]="init.input5"><mat-form-field appearance="fill" class="input5-width">
-        <mat-label>Input5</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let item of items" [value]="item.value">
-                {{item.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field></ng-template>
+    <ng-template *ngFor="let init of config; let i = index" [ngIf]="init.show && i >2">
+        <mat-form-field appearance="fill" class="input4-width">
+            <mat-label>{{init.name}}</mat-label>
+            <mat-select matTooltip="{{init.toolTip}}" disabled="{{init.disabled}}" required="{{init.required}}">
+                <mat-option *ngFor="let item of items" [value]="item.value">
+                    {{item.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-template>
 </form>
